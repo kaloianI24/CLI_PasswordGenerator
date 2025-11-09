@@ -10,15 +10,15 @@ namespace RandomPasswordgenerator
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter the lenght of your desired password between 8 and 64:\t");
+            Console.Write("Enter the lenght of your desired password between 8 and 164:\t");
             int length;
 
-            while (!int.TryParse(Console.ReadLine(), out length) || length < 8)
+            while (!int.TryParse(Console.ReadLine(), out length) || length < 8 || length > 164 )
             {
-                Console.WriteLine("\nThe lenght must be a positive number between 8 and 64");
+                Console.WriteLine("\nThe lenght must be a positive number between 8 and 164");
                 Console.Write("\nEnter desired password lenght:\t");
             }
-
+            
             Console.Write("\nDo you want to include upercase (y/n):\t");
             bool includeUpperCase = Console.ReadLine().ToLower() == "y";
 
