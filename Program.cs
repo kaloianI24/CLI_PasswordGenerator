@@ -60,7 +60,7 @@ namespace IDk
             string answer = Console.ReadLine().Trim().ToLower();
             if (answer == "y")
             {
-                string filepath = "password.txt";
+                string filepath = "Passwords/password.txt";
                 Console.Write("\nHow to name the file(default name is password):\t");
                 string fileName = (Console.ReadLine() ?? "").ToLower().Trim();
                 filepath = Path.Combine(Path.GetDirectoryName(filepath) ?? "", fileName + Path.GetExtension(filepath));
