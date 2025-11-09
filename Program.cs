@@ -13,7 +13,7 @@ namespace RandomPasswordgenerator
             Console.Write("Enter the lenght of your desired password between 8 and 64:\t");
             int length;
 
-            while   (!int.TryParse(Console.ReadLine(), out  length) || length < 8)
+            while (!int.TryParse(Console.ReadLine(), out length) || length < 8)
             {
                 Console.WriteLine("\nThe lenght must be a positive number between 8 and 64");
                 Console.Write("\nEnter desired password lenght:\t");
@@ -60,17 +60,24 @@ namespace RandomPasswordgenerator
             string answer = Console.ReadLine().Trim().ToLower();
             if (answer == "y")
             {
-                string filepath = "Passwords/password.txt";
+                string folderPath = "Passwords";
+                string filepath = "password.txt";
+                Directory.CreateDirectory(folderPath);
                 Console.Write("\nHow to name the file(default name is password):\t");
                 string fileName = (Console.ReadLine() ?? "").ToLower().Trim();
+                if (string.IsNullOrEmpty(fileName))
+                {
+                    fileName = Path.GetFileNameWithoutExtension(filepath);
+                }
+
                 filepath = Path.Combine(Path.GetDirectoryName(filepath) ?? "", fileName + Path.GetExtension(filepath));
 
-                if(File.Exists(filepath))
+                if (File.Exists(filepath))
                 {
                     Console.WriteLine($"\nFile with name {filepath} already exists");
                     Console.Write("\nWould you want to overwrite the file (yes or no):\t");
                     string response = Console.ReadLine().ToLower().Trim();
-                    if (response!="yes" && response !="y")
+                    if (response != "yes" && response != "y")
                     {
                         Console.WriteLine("Operation cancelled, file not saved");
                         Console.WriteLine("Shut down ...");
@@ -78,7 +85,7 @@ namespace RandomPasswordgenerator
                         Environment.Exit(0);
                     }
                 }
-                
+
 
                 File.WriteAllText(filepath, $"Your password is :{finalPassword}\n");
                 Console.WriteLine("Password saved Succefully");
@@ -86,11 +93,13 @@ namespace RandomPasswordgenerator
                 Thread.Sleep(1000);
                 Environment.Exit(0);
             }
-            else { Console.WriteLine("Shut down ....");
+            else
+            {
+                Console.WriteLine("Shut down ....");
                 Thread.Sleep(1000);
                 Environment.Exit(0);
             }
         }
-        
+
     }
 }
