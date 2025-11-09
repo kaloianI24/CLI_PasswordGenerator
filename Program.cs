@@ -61,8 +61,9 @@ namespace RandomPasswordgenerator
             if (answer == "y")
             {
                 string folderPath = "Passwords";
-                string filepath = "password.txt";
                 Directory.CreateDirectory(folderPath);
+                string filepath = "Passwords/password.txt";
+                
                 Console.Write("\nHow to name the file(default name is password):\t");
                 string fileName = (Console.ReadLine() ?? "").ToLower().Trim();
                 if (string.IsNullOrEmpty(fileName))
