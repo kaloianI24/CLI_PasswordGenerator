@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Threading.Channels;
 
-namespace IDk
+namespace RandomPasswordgenerator
 {
     internal class PasswordGenerator
     {
